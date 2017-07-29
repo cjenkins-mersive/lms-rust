@@ -1,0 +1,6 @@
+[package]
+name = "lms-rust"
+version = "0.1.0"
+authors = ["Clinton Jenkins <cjenkins@mersive.com>"]
+
+[dependencies]

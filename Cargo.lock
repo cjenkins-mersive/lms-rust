@@ -1,0 +1,4 @@
+[root]
+name = "lms-rust"
+version = "0.1.0"
+
