@@ -4,3 +4,6 @@ version = "0.1.0"
 authors = ["Clinton Jenkins <cjenkins@mersive.com>"]
 
 [dependencies]
+notify = "4.0.1"
+crc = "^1.0.0"
+websocket = "*"

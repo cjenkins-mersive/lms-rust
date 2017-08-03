@@ -1,0 +1,5 @@
+[build]
+target = "arm-linux-androideabi"
+
+[target.arm-linux-androideabi]
+linker = "c:/tools/android-18-toolchain/bin/arm-linux-androideabi-clang.cmd"
