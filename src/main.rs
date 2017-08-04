@@ -79,8 +79,10 @@ fn verify_checksum(checksum: String, data: String) -> Result<String, ()> {
 fn main() {
     let mut args = env::args();
     let _ = args.next();
-    let data_file_path = args.next().unwrap();
-    let websocket_address = args.next().unwrap();
+    let data_file_path = "/sdcard/Android/data/com.mersive.solstice.server/files/Logs/server.json";
+    //args.next().unwrap();
+    let websocket_address = "ws://192.168.2.19:8443/produce";
+    //args.next().unwrap();
     
     let path = Path::new(&data_file_path);
     if path.exists() && path.is_file() {
@@ -91,7 +93,7 @@ fn main() {
 
         let mut websocket_client = ClientBuilder::new(&websocket_address)
             .unwrap()
-            .connect_secure(None)
+            .connect_insecure()
             .unwrap();
         
         let receiver_thread = thread::spawn( move || {
@@ -100,8 +102,7 @@ fn main() {
                 let data = line_rx.recv().unwrap();
                 
                 match verify_checksum(crc_string, data) {
-                    Ok(s) => println!("Would send {:?}", s),
-                    //websocket_client.send_message(&OwnedMessage::Text(s)).unwrap(),
+                    Ok(s) => websocket_client.send_message(&OwnedMessage::Text(s)).unwrap(),
                     Err(_) => println!("Failed checksum"),
                 }
             }

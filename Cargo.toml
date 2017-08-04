@@ -7,3 +7,4 @@ authors = ["Clinton Jenkins <cjenkins@mersive.com>"]
 notify = "4.0.1"
 crc = "^1.0.0"
 websocket = "*"
+native-tls = "*"
